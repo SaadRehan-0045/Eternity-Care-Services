@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Coordination | Best Home Care</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remixicon Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'fade-in-right': 'fadeInRight 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition for all elements */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* Better dark mode contrast */
+        .dark body {
+            color-scheme: dark;
+        }
+
+        /* Card hover effect */
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .feature-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero image overlay - matches header */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(37, 99, 235, 0.75) 50%, rgba(59, 130, 246, 0.7) 100%);
+        }
+        .dark .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(30, 64, 175, 0.85) 50%, rgba(37, 99, 235, 0.8) 100%);
+        }
+
+        /* Parallax background effect */
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .parallax-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(37, 99, 235, 0.85) 50%, rgba(59, 130, 246, 0.8) 100%);
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+        .dark .parallax-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(30, 64, 175, 0.9) 50%, rgba(37, 99, 235, 0.85) 100%);
+        }
+
+        /* Button hover effect */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Support option card */
+        .support-option {
+            transition: all 0.3s ease;
+        }
+        .support-option:hover {
+            transform: scale(1.02);
+            border-color: #2563eb;
+        }
+
+        /* Enquire button pulse */
+        .enquire-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Feature icon float */
+        .feature-icon {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<%- include('../header.ejs') %> 
+<br>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen font-sans antialiased">
+
+    <!-- Hero Section with Unsplash Image - Empowering NDIS participant -->
+    <section class="relative w-full h-96 lg:h-[550px] overflow-hidden">
+        <!-- Unsplash/Pexels Image: Person with disability feeling empowered -->
+        <img src="https://images.pexels.com/photos/6647026/pexels-photo-6647026.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+             alt="Empowered person with disability" 
+             class="absolute inset-0 w-full h-full object-cover object-center"
+             loading="lazy">
+        <!-- Blue Gradient Overlay - matches header theme -->
+        <div class="hero-overlay absolute inset-0"></div>
+        
+        <!-- Hero Content -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 animate-fade-in-up">
+            <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                <i class="ri-hand-heart-line text-white text-3xl"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+                Support Coordination
+            </h1>
+            <div class="w-24 h-1 bg-white rounded-full mb-6"></div>
+            <p class="text-white text-xl md:text-2xl max-w-3xl drop-shadow-md font-medium">
+                Empowering You to Achieve Your NDIS Goals
+            </p>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center justify-center p-2 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-6">
+                    <i class="ri-compass-discover-line text-blue-600 dark:text-blue-400 text-2xl mx-2"></i>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
+                    At Eternity Care Services, we understand the importance of having the right support to navigate your NDIS journey. Our expert Support Coordinators and Psychosocial Recovery Coaches work with you every step of the way to ensure that you have access to the services and supports you need. Whether it's coordinating your services or supporting your mental health recovery, we are here to help you live the life you deserve.
+                </p>
+                <div class="mt-8">
+                    <a href="#" class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:underline">
+                        <span>See more</span>
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guiding You Through Your NDIS Journey Section with Image -->
+    <section class="bg-white dark:bg-gray-800 py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <!-- Image Side (Different Image) -->
+                <div class="lg:w-1/2 animate-fade-in-right">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="https://images.pexels.com/photos/7551610/pexels-photo-7551610.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+                             alt="Support coordinator guiding client" 
+                             class="w-full h-auto object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg">
+                            <p class="text-blue-600 dark:text-blue-400 font-semibold flex items-center">
+                                <i class="ri-user-star-line mr-2"></i> Level 2 & 3 Support
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Side -->
+                <div class="lg:w-1/2 space-y-6 animate-fade-in-up">
+                    <div class="inline-flex items-center p-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                        <i class="ri-compass-line text-blue-600 dark:text-blue-400 mr-2"></i>
+                        <span class="text-blue-600 dark:text-blue-400 font-medium">Guiding You Through Your NDIS Journey</span>
+                    </div>
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                        You Don't Have to <span class="text-blue-600 dark:text-blue-400">Do It Alone</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                        Navigating the NDIS can feel overwhelming, but you don't have to do it alone. At Eternity Care Services, our Support Coordinators and Psychosocial Recovery Coaches are here to empower you, helping you access the right supports and services tailored to your needs.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                        Whether you need structured coordination of your NDIS plan or ongoing support for your mental health recovery, our dedicated team ensures that you stay in control of your choices and goals.
+                    </p>
+                    
+                    <!-- Level badges -->
+                    <div class="flex flex-wrap gap-3 pt-4">
+                        <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full text-sm font-medium border border-blue-200 dark:border-blue-800">Level 2 Support Coordination</span>
+                        <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full text-sm font-medium border border-blue-200 dark:border-blue-800">Level 3 Support Coordination</span>
+                    </div>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm italic">We offer Level 2 and Level 3 Support Coordination services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Choose Your Support Option Section -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                Choose Your <span class="text-blue-600 dark:text-blue-400">Support Option</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+                Find the Right Support for Your Journey
+            </p>
+            <p class="text-gray-500 dark:text-gray-400 text-sm max-w-xl mx-auto mt-4">
+                Choosing the right support is key to making the most of your NDIS plan. Whether you need structured coordination to manage your services or dedicated recovery coaching for mental health support, we're here to help. Select the option that best suits your needs and take the next step towards greater independence and well-being.
+            </p>
+        </div>
+
+        <!-- Two Option Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <!-- Option 1: Support Coordination -->
+            <div class="support-option bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden border-2 border-transparent hover:border-blue-500 cursor-pointer">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/6647030/pexels-photo-6647030.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                         alt="Support Coordination" 
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="p-8 text-center">
+                    <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/40 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-team-line text-3xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Support Coordination</h3>
+                    <a href="#support-coordination" class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:underline">
+                        <span>Learn More</span>
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Option 2: Psychosocial Recovery Coaching -->
+            <div class="support-option bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden border-2 border-transparent hover:border-blue-500 cursor-pointer">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/6647017/pexels-photo-6647017.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                         alt="Psychosocial Recovery Coaching" 
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="p-8 text-center">
+                    <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/40 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-mental-health-line text-3xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Psychosocial Recovery Coaching</h3>
+                    <a href="#recovery-coaching" class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:underline">
+                        <span>Learn More</span>
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Background Section 1: Empowering You Every Step -->
+    <section class="parallax-section relative py-24 md:py-32" style="background-image: url('https://images.pexels.com/photos/6647026/pexels-photo-6647026.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+        <div class="parallax-overlay"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-8">
+                    <i class="ri-rocket-line text-3xl"></i>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">Empowering You Every Step of the Way</h2>
+                <div class="w-24 h-1 bg-white/50 rounded-full mx-auto mb-8"></div>
+                <p class="text-xl md:text-2xl leading-relaxed text-white/95">
+                    No matter which path you choose, we're here to support your journey to independence and well-being. Let's work together to create a plan that truly reflects your goals and aspirations.
+                </p>
+                <div class="mt-10">
+                    <a href="#disability-care" class="inline-flex items-center text-white bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full hover:bg-white/30 transition-all">
+                        <span>Disability Care</span>
+                        <i class="ri-arrow-right-line ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Support Coordination Section -->
+    <section id="support-coordination" class="container mx-auto px-4 py-16 md:py-20">
+        <div class="flex flex-col lg:flex-row gap-12 items-start">
+            <!-- Left Content -->
+            <div class="lg:w-1/2 space-y-6">
+                <div class="inline-flex items-center p-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                    <i class="ri-question-line text-blue-600 dark:text-blue-400 mr-2"></i>
+                    <span class="text-blue-600 dark:text-blue-400 font-medium">What is Support Coordination?</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                    Navigating Your <span class="text-blue-600 dark:text-blue-400">NDIS Plan</span> with Confidence
+                </h2>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    Support Coordination helps NDIS participants navigate their plans, access the right services, and make informed decisions about their care. It ensures participants get the most from their funding while working towards their personal goals.
+                </p>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    For participants with more complex needs, Specialist Support Coordination provides a higher level of support. At Eternity Care Services, we offer this specialised service to assist individuals facing significant challenges in managing their supports or navigating multiple service systems.
+                </p>
+                <a href="#" class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:underline">
+                    <span>Explore Specialist Support Coordination</span>
+                    <i class="ri-arrow-right-line ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Right Image -->
+            <div class="lg:w-1/2">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://images.pexels.com/photos/7653567/pexels-photo-7653567.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                         alt="Support coordination meeting" 
+                         class="w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Grid - Support Coordination -->
+    <section class="bg-gray-50 dark:bg-gray-900 py-16">
+        <div class="container mx-auto px-4">
+            <h3 class="text-2xl md:text-3xl font-bold text-center text-gray-800 dark:text-white mb-12">Key Features of Support Coordination</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mb-4">
+                        <i class="ri-calendar-check-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Personalised Planning</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">We help you understand your NDIS plan, identify your goals, and create a strategy to access the right supports.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mb-4">
+                        <i class="ri-handshake-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Connecting with Providers</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">We assist in finding and coordinating with the best service providers for your needs, including healthcare, therapy, accommodation, and daily support.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mb-4">
+                        <i class="ri-file-search-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Navigating NDIS Processes</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">We simplify the complexities of the NDIS, guiding you through approvals, funding allocations, and service agreements.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mb-4">
+                        <i class="ri-funds-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Budgeting & Fund Management</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Our coordinators ensure your NDIS funding is used effectively, helping you allocate funds efficiently for different services.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mb-4">
+                        <i class="ri-refresh-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Plan Reassessment & Adjustments</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">If your needs change, we help you prepare for plan reassessments, ensuring your supports continue to meet your evolving requirements.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mb-4">
+                        <i class="ri-group-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Meeting with the NDIS Regularly</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">We assist in arranging and attending NDIS meetings, advocating for your needs, and ensuring your plan remains relevant and beneficial.</p>
+                </div>
+
+                <!-- Feature 7 -->
+                <div class="feature-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mb-4">
+                        <i class="ri-flight-takeoff-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Building Independence</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">We empower you with the skills and confidence to manage your supports over time.</p>
+                </div>
+
+                <!-- Feature 8 -->
+                <div class="feature-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mb-4">
+                        <i class="ri-voiceprint-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Ongoing Support & Advocacy</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">If any challenges arise, we advocate on your behalf to resolve issues and ensure your needs are met.</p>
+                </div>
+            </div>
+
+            <!-- Enquire Now Button -->
+            <div class="text-center mt-12">
+                <a href="#enquire" class="btn-hover enquire-pulse inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-bold px-10 py-4 rounded-full shadow-lg transition-all duration-300">
+                    <i class="ri-chat-1-line mr-2 text-xl"></i>
+                    Enquire Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Background Section 2: Here for You -->
+    <section class="parallax-section relative py-24 md:py-32" style="background-image: url('https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+        <div class="parallax-overlay"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-8">
+                    <i class="ri-heart-pulse-fill text-3xl"></i>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">Here for You, Every Step of the Way</h2>
+                <div class="w-24 h-1 bg-white/50 rounded-full mx-auto mb-8"></div>
+                <p class="text-xl md:text-2xl leading-relaxed text-white/95">
+                    Your goals matter — and we're here to help you achieve them. At Eternity Care Services, we work alongside you to build a support plan that's tailored, empowering, and focused on your unique vision for life. Together, we'll turn challenges into progress and goals into reality.
+                </p>
+                <div class="mt-10">
+                    <a href="#disability-care" class="inline-flex items-center text-white bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full hover:bg-white/30 transition-all">
+                        <span>Disability Care</span>
+                        <i class="ri-arrow-right-line ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Psychosocial Recovery Coaching Section -->
+    <section id="recovery-coaching" class="container mx-auto px-4 py-16 md:py-20">
+        <div class="flex flex-col lg:flex-row gap-12 items-start">
+            <!-- Left Image -->
+            <div class="lg:w-1/2 order-2 lg:order-1">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://images.pexels.com/photos/6647026/pexels-photo-6647026.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                         alt="Psychosocial recovery coaching" 
+                         class="w-full h-auto object-cover">
+                </div>
+            </div>
+
+            <!-- Right Content -->
+            <div class="lg:w-1/2 space-y-6 order-1 lg:order-2">
+                <div class="inline-flex items-center p-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                    <i class="ri-mental-health-line text-blue-600 dark:text-blue-400 mr-2"></i>
+                    <span class="text-blue-600 dark:text-blue-400 font-medium">What is Psychosocial Recovery Coaching?</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                    Building Resilience, Achieving <span class="text-blue-600 dark:text-blue-400">Recovery Goals</span>
+                </h2>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    Psychosocial Recovery Coaching is specifically designed for people who have experienced mental health challenges. A Psychosocial Recovery Coach works closely with you to develop practical strategies to achieve personal recovery goals. They help you build resilience, access mental health supports, and work towards greater independence.
+                </p>
+
+                <!-- Recovery Coaching Key Features -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                    <div class="flex items-start">
+                        <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-2 mt-0.5"></i>
+                        <span class="text-gray-700 dark:text-gray-300 text-sm">Goal Setting & Recovery Planning</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-2 mt-0.5"></i>
+                        <span class="text-gray-700 dark:text-gray-300 text-sm">Emotional & Practical Support</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-2 mt-0.5"></i>
+                        <span class="text-gray-700 dark:text-gray-300 text-sm">Mental Health Advocacy</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-2 mt-0.5"></i>
+                        <span class="text-gray-700 dark:text-gray-300 text-sm">Community Connection</span>
+                    </div>
+                </div>
+
+                <!-- Enquire Now Button -->
+                <div class="pt-6">
+                    <a href="#enquire" class="btn-hover inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-full shadow-lg transition-all duration-300">
+                        <i class="ri-chat-1-line mr-2 text-xl"></i>
+                        Enquire Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Background Section 3: Empowering You Every Step (repeated but different image) -->
+    <section class="parallax-section relative py-24 md:py-32" style="background-image: url('https://images.pexels.com/photos/7551621/pexels-photo-7551621.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+        <div class="parallax-overlay"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-8">
+                    <i class="ri-rocket-line text-3xl"></i>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">Empowering You Every Step of the Way</h2>
+                <div class="w-24 h-1 bg-white/50 rounded-full mx-auto mb-8"></div>
+                <p class="text-xl md:text-2xl leading-relaxed text-white/95">
+                    No matter which path you choose, we're here to support your journey to independence and well-being. Let's work together to create a plan that truly reflects your goals and aspirations.
+                </p>
+                <div class="mt-10">
+                    <a href="#disability-care" class="inline-flex items-center text-white bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full hover:bg-white/30 transition-all">
+                        <span>Disability Care</span>
+                        <i class="ri-arrow-right-line ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialist Support Coordination Section -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="flex flex-col lg:flex-row gap-12 items-start">
+            <!-- Left Content -->
+            <div class="lg:w-1/2 space-y-6">
+                <div class="inline-flex items-center p-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                    <i class="ri-star-line text-blue-600 dark:text-blue-400 mr-2"></i>
+                    <span class="text-blue-600 dark:text-blue-400 font-medium">Specialist Support Coordination</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                    For Participants with <span class="text-blue-600 dark:text-blue-400">Complex Needs</span>
+                </h2>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    At Eternity Care Services, we offer Specialist Support Coordination as part of our commitment to helping NDIS participants navigate complex challenges and make the most of their plans.
+                </p>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    Our Specialist Support Coordinators work closely with participants who face more intensive or high-level barriers to accessing services. We focus on strengthening a participant's ability to manage their supports, ensuring services are delivered effectively and aligned with their goals, while also addressing crisis situations and reducing long-term dependency on supports.
+                </p>
+                <p class="text-gray-500 dark:text-gray-400 text-sm italic">With over a decade of experience in disability support, Eternity Care Services delivers compassionate, expert coordination tailored to your unique situation.</p>
+            </div>
+
+            <!-- Right Image -->
+            <div class="lg:w-1/2">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                         alt="Specialist support coordination" 
+                         class="w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+
+        <!-- How We Help Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+            <div class="feature-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border-t-4 border-blue-500">
+                <i class="ri-shield-line text-3xl text-blue-600 dark:text-blue-400 mb-3"></i>
+                <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Complex support needs</h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">We help participants with multiple or high-risk needs coordinate services across health, housing, justice, and other systems.</p>
+            </div>
+            <div class="feature-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border-t-4 border-blue-500">
+                <i class="ri-alert-line text-3xl text-blue-600 dark:text-blue-400 mb-3"></i>
+                <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Crisis management</h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">They provide both emotional encouragement and practical assistance in managing life's challenges and stresses.</p>
+            </div>
+            <div class="feature-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border-t-4 border-blue-500">
+                <i class="ri-bar-chart-line text-3xl text-blue-600 dark:text-blue-400 mb-3"></i>
+                <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Capacity building</h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">We work collaboratively with mainstream and community services to ensure your support network is well connected and responsive.</p>
+            </div>
+            <div class="feature-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border-t-4 border-blue-500">
+                <i class="ri-puzzle-line text-3xl text-blue-600 dark:text-blue-400 mb-3"></i>
+                <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Integrated care</h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">A key part of recovery is social and community engagement. Your coach helps you navigate local services and supports to help you integrate into the community.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Which Support is Right for You? Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 py-16 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-3xl mx-auto">
+                <i class="ri-question-mark-line text-5xl mb-4 inline-block text-white/90 bg-white/20 p-4 rounded-full"></i>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Which Support is Right for You?</h2>
+                <p class="text-xl md:text-2xl leading-relaxed mb-8 text-white/90">
+                    Not sure whether you need Support Coordination or Psychosocial Recovery Coaching? Our team is here to guide you. Whether you require structured coordination for your NDIS plan or a coach to support your mental health recovery journey, we'll help you choose the right service tailored to your goals and needs.
+                </p>
+                
+                <!-- Phone Number and CTA -->
+                <div class="flex flex-col items-center justify-center space-y-4 mt-8">
+                    <a href="tel:1300513309" class="text-4xl md:text-5xl font-bold text-white hover:underline flex items-center">
+                        <i class="ri-phone-line mr-4 text-3xl"></i>
+                        1300 513 309
+                    </a>
+                    <p class="text-white/80 text-lg">Call us today for a free consultation</p>
+                    <a href="#" class="btn-hover mt-4 bg-white text-blue-700 font-bold px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center">
+                        <i class="ri-chat-1-line mr-2 text-xl"></i>
+                        Find the Right Support Today!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <%- include('../footer.ejs') %> 
+    <!-- Theme Toggle JavaScript (matches header system) -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Theme initialization
+            function initTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+                
+                if (currentTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    updateThemeUI('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    updateThemeUI('light');
+                }
+            }
+            
+            // Update UI elements
+            function updateThemeUI(theme) {
+                const themeIcon = document.getElementById('themeIcon');
+                const themeText = document.getElementById('themeText');
+                
+                if (themeIcon) {
+                    themeIcon.className = theme === 'dark' ? 'ri-sun-line mr-2 text-lg' : 'ri-moon-line mr-2 text-lg';
+                }
+                if (themeText) {
+                    themeText.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+                }
+            }
+            
+            // Toggle theme
+            window.toggleTheme = function() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    updateThemeUI('light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    updateThemeUI('dark');
+                }
+            };
+
+            // Event listeners
+            function initThemeToggle() {
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.toggleTheme();
+                    });
+                }
+            }
+
+            // Initialize on load
+            document.addEventListener('DOMContentLoaded', function() {
+                initTheme();
+                initThemeToggle();
+            });
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark');
+                        updateThemeUI('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        updateThemeUI('light');
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

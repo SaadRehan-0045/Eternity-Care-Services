@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | Best Home Care</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remixicon Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'fade-in-right': 'fadeInRight 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition for all elements */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* Better dark mode contrast */
+        .dark body {
+            color-scheme: dark;
+        }
+
+        /* Story card hover effect */
+        .story-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .story-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero image overlay - matches header */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(37, 99, 235, 0.75) 50%, rgba(59, 130, 246, 0.7) 100%);
+        }
+        .dark .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(30, 64, 175, 0.85) 50%, rgba(37, 99, 235, 0.8) 100%);
+        }
+
+        /* Value card styles */
+        .value-card {
+            transition: all 0.3s ease;
+        }
+        .value-card:hover {
+            transform: scale(1.02);
+        }
+
+        /* Timeline element */
+        .timeline-dot {
+            transition: all 0.3s ease;
+        }
+        .timeline-dot:hover {
+            transform: scale(1.2);
+            background-color: #2563eb;
+        }
+
+        /* Image overlay for story images */
+        .image-overlay {
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.2) 0%, rgba(59, 130, 246, 0.1) 100%);
+        }
+    </style>
+</head>
+
+<%- include('../header.ejs') %> 
+<br>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen font-sans antialiased">
+    <!-- Hero Section with Unsplash Image - Caring hands / compassionate care -->
+    <section class="relative w-full h-96 lg:h-[550px] overflow-hidden">
+        <!-- Unsplash/Pexels Image: Elderly hands holding younger hands - compassion, care -->
+        <img src="https://images.pexels.com/photos/7551621/pexels-photo-7551621.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+             alt="Compassionate hands - caring for elderly" 
+             class="absolute inset-0 w-full h-full object-cover object-center"
+             loading="lazy">
+        <!-- Blue Gradient Overlay - matches header theme -->
+        <div class="hero-overlay absolute inset-0"></div>
+        
+        <!-- Hero Content -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 animate-fade-in-up">
+            <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                <i class="ri-heart-pulse-fill text-white text-3xl"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+                Our Story
+            </h1>
+            <div class="w-24 h-1 bg-white rounded-full mb-6"></div>
+            <p class="text-white text-xl md:text-2xl max-w-3xl drop-shadow-md font-medium">
+                Caring with Heart – Transforming Lives Through Compassion, Empathy, and Support
+            </p>
+        </div>
+    </section>
+
+    <!-- Introduction Section - The Heart of Our Story -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center justify-center p-2 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-6">
+                    <i class="ri-heart-2-fill text-blue-600 dark:text-blue-400 text-2xl mx-2"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-white mb-6">
+                    Our Journey of <span class="text-blue-600 dark:text-blue-400">Compassion</span>
+                </h2>
+                <p class="text-gray-600 dark:text-gray-300 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+                    At Best of Home Care, we provide compassionate, personalised care to help individuals of all ages and abilities live life to the fullest. Our dedicated team of caregivers offers support tailored to your needs, ensuring comfort, dignity, and peace of mind every step of the way.
+                </p>
+            </div>
+
+            <!-- Stats / Impact Numbers -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">500+</div>
+                    <p class="text-gray-600 dark:text-gray-400">Clients Supported</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">15+</div>
+                    <p class="text-gray-600 dark:text-gray-400">Years Experience</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">50+</div>
+                    <p class="text-gray-600 dark:text-gray-400">Dedicated Carers</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">100%</div>
+                    <p class="text-gray-600 dark:text-gray-400">Person-Centred</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Beginning - Our Foundation Story -->
+    <section class="bg-white dark:bg-gray-800 py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <!-- Image Side -->
+                <div class="lg:w-1/2 animate-fade-in-right">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+                             alt="Founders of Best Home Care" 
+                             class="w-full h-auto object-cover">
+                        <div class="absolute inset-0 image-overlay"></div>
+                        <div class="absolute bottom-4 left-4 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg">
+                            <p class="text-blue-600 dark:text-blue-400 font-semibold">Est. 2010</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Side -->
+                <div class="lg:w-1/2 space-y-6 animate-fade-in-up">
+                    <div class="inline-flex items-center p-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                        <i class="ri-star-line text-blue-600 dark:text-blue-400 mr-2"></i>
+                        <span class="text-blue-600 dark:text-blue-400 font-medium">Where It All Began</span>
+                    </div>
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                        A Vision Born from <span class="text-blue-600 dark:text-blue-400">Heartfelt Care</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                        Best of Home Care was founded in 2010 by Arun and Anand Tom, two brothers who shared a simple yet powerful vision: to create a home care provider that truly puts people first. Growing up in a close-knit family, they witnessed firsthand the difference that compassionate care can make in someone's life.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                        What started as a small team of dedicated caregivers in Melbourne's south-eastern suburbs has grown into a trusted provider across Victoria. But despite our growth, we've never lost sight of what matters most: the individuals and families we serve.
+                    </p>
+                    <div class="flex items-center space-x-4 pt-4">
+                        <div class="flex -space-x-2">
+                            <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold border-2 border-white dark:border-gray-800">A</div>
+                            <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold border-2 border-white dark:border-gray-800">A</div>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 italic">"Care is not just what we do – it's who we are."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Mission & Values Section -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center justify-center p-2 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-6">
+                <i class="ri-hearts-line text-blue-600 dark:text-blue-400 text-2xl mx-2"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                What We <span class="text-blue-600 dark:text-blue-400">Stand For</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+                Our values are the foundation of everything we do. They guide us in delivering care that truly makes a difference.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Value 1: Compassion -->
+            <div class="value-card bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-100 dark:border-gray-700 text-center">
+                <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/40 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <i class="ri-heart-pulse-fill text-3xl text-blue-600 dark:text-blue-400"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Compassion</h3>
+                <p class="text-gray-600 dark:text-gray-400">We care deeply about every individual, treating each person with the warmth and kindness they deserve.</p>
+            </div>
+
+            <!-- Value 2: Empathy -->
+            <div class="value-card bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-100 dark:border-gray-700 text-center">
+                <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/40 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <i class="ri-user-heart-line text-3xl text-blue-600 dark:text-blue-400"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Empathy</h3>
+                <p class="text-gray-600 dark:text-gray-400">We listen, we understand, and we walk alongside our clients and their families every step of the way.</p>
+            </div>
+
+            <!-- Value 3: Dignity -->
+            <div class="value-card bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-100 dark:border-gray-700 text-center">
+                <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/40 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <i class="ri-government-line text-3xl text-blue-600 dark:text-blue-400"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Dignity</h3>
+                <p class="text-gray-600 dark:text-gray-400">We honour the autonomy and respect of every person, empowering them to maintain their independence.</p>
+            </div>
+
+            <!-- Value 4: Excellence -->
+            <div class="value-card bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-100 dark:border-gray-700 text-center">
+                <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/40 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <i class="ri-medal-line text-3xl text-blue-600 dark:text-blue-400"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Excellence</h3>
+                <p class="text-gray-600 dark:text-gray-400">We continuously strive to improve, delivering the highest quality care through training and innovation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Journey Timeline / Growth Story -->
+    <section class="bg-blue-50 dark:bg-gray-800/50 py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                    Our <span class="text-blue-600 dark:text-blue-400">Journey</span>
+                </h2>
+                <p class="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+                    From humble beginnings to trusted care provider – our story of growth and commitment.
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <!-- Timeline Item 1 -->
+                <div class="flex flex-col md:flex-row gap-6 mb-12 relative">
+                    <div class="md:w-1/3 text-left md:text-right">
+                        <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">2010</div>
+                        <div class="text-sm text-gray-500 dark:text-gray-400">The Beginning</div>
+                    </div>
+                    <div class="md:w-2/3 relative pl-6 md:pl-0">
+                        <div class="absolute left-0 top-0 w-0.5 h-full bg-blue-200 dark:bg-blue-800 hidden md:block"></div>
+                        <div class="timeline-dot absolute left-[-5px] top-1 w-3 h-3 rounded-full bg-blue-600 dark:bg-blue-400 hidden md:block"></div>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md story-card">
+                            <p class="text-gray-700 dark:text-gray-300">Best of Home Care was founded by Arun and Anand Tom with just 3 dedicated caregivers serving families in Clyde North and surrounding areas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="flex flex-col md:flex-row gap-6 mb-12">
+                    <div class="md:w-1/3 text-left md:text-right">
+                        <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">2015</div>
+                        <div class="text-sm text-gray-500 dark:text-gray-400">Expanding Reach</div>
+                    </div>
+                    <div class="md:w-2/3 relative pl-6 md:pl-0">
+                        <div class="absolute left-0 top-0 w-0.5 h-full bg-blue-200 dark:bg-blue-800 hidden md:block"></div>
+                        <div class="timeline-dot absolute left-[-5px] top-1 w-3 h-3 rounded-full bg-blue-600 dark:bg-blue-400 hidden md:block"></div>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md story-card">
+                            <p class="text-gray-700 dark:text-gray-300">Grew to a team of 20 caregivers and opened our first dedicated office. Launched disability support services alongside aged care.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="flex flex-col md:flex-row gap-6 mb-12">
+                    <div class="md:w-1/3 text-left md:text-right">
+                        <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">2020</div>
+                        <div class="text-sm text-gray-500 dark:text-gray-400">Recognised Excellence</div>
+                    </div>
+                    <div class="md:w-2/3 relative pl-6 md:pl-0">
+                        <div class="absolute left-0 top-0 w-0.5 h-full bg-blue-200 dark:bg-blue-800 hidden md:block"></div>
+                        <div class="timeline-dot absolute left-[-5px] top-1 w-3 h-3 rounded-full bg-blue-600 dark:bg-blue-400 hidden md:block"></div>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md story-card">
+                            <p class="text-gray-700 dark:text-gray-300">Awarded "Provider of Choice" by local communities. Launched SIL and SDA accommodations, supporting clients with greater needs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="md:w-1/3 text-left md:text-right">
+                        <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">Today</div>
+                        <div class="text-sm text-gray-500 dark:text-gray-400">Continuing the Mission</div>
+                    </div>
+                    <div class="md:w-2/3 relative pl-6 md:pl-0">
+                        <div class="absolute left-0 top-0 w-0.5 h-full bg-blue-200 dark:bg-blue-800 hidden md:block"></div>
+                        <div class="timeline-dot absolute left-[-5px] top-1 w-3 h-3 rounded-full bg-blue-600 dark:bg-blue-400 hidden md:block"></div>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md story-card">
+                            <p class="text-gray-700 dark:text-gray-300">50+ dedicated team members, 500+ clients supported, and growing. Still family-owned, still putting heart into every interaction.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Families Choose Us -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <!-- Content Side -->
+            <div class="lg:w-1/2 space-y-6 animate-fade-in-right">
+                <div class="inline-flex items-center p-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                    <i class="ri-shield-heart-line text-blue-600 dark:text-blue-400 mr-2"></i>
+                    <span class="text-blue-600 dark:text-blue-400 font-medium">Why Families Trust Us</span>
+                </div>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                    More Than Care – <span class="text-blue-600 dark:text-blue-400">A True Partnership</span>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    Families choose Best of Home Care because we treat their loved ones like our own family. We take the time to understand each person's unique story, preferences, and needs – then craft care that feels less like a service and more like support from someone who genuinely cares.
+                </p>
+                <ul class="space-y-3 pt-4">
+                    <li class="flex items-start">
+                        <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-3 mt-0.5"></i>
+                        <span class="text-gray-700 dark:text-gray-300">Person-centred planning – your goals, your choices</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-3 mt-0.5"></i>
+                        <span class="text-gray-700 dark:text-gray-300">Consistent caregivers who build genuine relationships</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-3 mt-0.5"></i>
+                        <span class="text-gray-700 dark:text-gray-300">24/7 support and peace of mind for families</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-3 mt-0.5"></i>
+                        <span class="text-gray-700 dark:text-gray-300">Transparent communication and flexible services</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Image Side -->
+            <div class="lg:w-1/2 animate-fade-in-up">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://images.pexels.com/photos/6647030/pexels-photo-6647030.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+                         alt="Happy client with caregiver" 
+                         class="w-full h-auto object-cover">
+                    <div class="absolute bottom-4 right-4 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg">
+                        <p class="text-blue-600 dark:text-blue-400 font-semibold flex items-center">
+                            <i class="ri-heart-3-fill mr-2"></i> 500+ Happy Families
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Looking Forward - Our Vision -->
+    <section class="bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 py-16 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-4xl mx-auto">
+                <i class="ri-rocket-line text-5xl mb-4 inline-block text-white/90"></i>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Looking to the Future</h2>
+                <p class="text-xl md:text-2xl leading-relaxed mb-8 text-white/90">
+                    As we grow, our commitment remains the same: to provide care that honours the dignity, independence, and unique spirit of every person we serve. We're expanding our services, investing in our team, and always finding new ways to make a difference.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
+                        <i class="ri-home-heart-line mr-2"></i> New Accommodations
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
+                        <i class="ri-team-line mr-2"></i> Growing Team
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
+                        <i class="ri-heart-pulse-fill mr-2"></i> Innovative Care
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action - Join Our Mission -->
+    <section class="container mx-auto px-4 py-16 md:py-20 text-center">
+        <div class="max-w-3xl mx-auto">
+            <div class="w-20 h-20 bg-blue-100 dark:bg-blue-900/40 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="ri-heart-add-line text-4xl text-blue-600 dark:text-blue-400"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                Be Part of <span class="text-blue-600 dark:text-blue-400">Our Story</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 text-lg md:text-xl mb-8">
+                Whether you're seeking care for yourself or a loved one, or you're passionate about joining our team – we'd love to hear from you. Together, we can continue transforming lives through compassion.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#" class="btn-hover bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center">
+                    <i class="ri-phone-line mr-2 text-xl"></i>
+                    Talk to Us Today
+                </a>
+                <a href="#" class="btn-hover bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 border-2 border-blue-600 dark:border-blue-400 font-bold px-8 py-4 rounded-full hover:bg-blue-50 dark:hover:bg-gray-700 transition-all duration-300 flex items-center justify-center">
+                    <i class="ri-briefcase-line mr-2 text-xl"></i>
+                    Join Our Team
+                </a>
+            </div>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mt-6">
+                Best of Home Care – Caring with Heart, Every Day
+            </p>
+        </div>
+    </section>
+<%- include('../footer.ejs') %> 
+    <!-- Theme Toggle JavaScript (matches header system) -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Theme initialization
+            function initTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+                
+                if (currentTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    updateThemeUI('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    updateThemeUI('light');
+                }
+            }
+            
+            // Update UI elements
+            function updateThemeUI(theme) {
+                const themeIcon = document.getElementById('themeIcon');
+                const themeText = document.getElementById('themeText');
+                
+                if (themeIcon) {
+                    themeIcon.className = theme === 'dark' ? 'ri-sun-line mr-2 text-lg' : 'ri-moon-line mr-2 text-lg';
+                }
+                if (themeText) {
+                    themeText.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+                }
+            }
+            
+            // Toggle theme
+            window.toggleTheme = function() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    updateThemeUI('light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    updateThemeUI('dark');
+                }
+            };
+
+            // Event listeners
+            function initThemeToggle() {
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.toggleTheme();
+                    });
+                }
+            }
+
+            // Initialize on load
+            document.addEventListener('DOMContentLoaded', function() {
+                initTheme();
+                initThemeToggle();
+            });
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark');
+                        updateThemeUI('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        updateThemeUI('light');
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

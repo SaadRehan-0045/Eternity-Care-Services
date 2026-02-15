@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Care | Best Home Care</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remixicon Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'fade-in-right': 'fadeInRight 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition for all elements */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* Better dark mode contrast */
+        .dark body {
+            color-scheme: dark;
+        }
+
+        /* Service card hover effect */
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .service-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero image overlay - matches header */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(37, 99, 235, 0.75) 50%, rgba(59, 130, 246, 0.7) 100%);
+        }
+        .dark .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(30, 64, 175, 0.85) 50%, rgba(37, 99, 235, 0.8) 100%);
+        }
+
+        /* Parallax background effect */
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .parallax-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(37, 99, 235, 0.85) 50%, rgba(59, 130, 246, 0.8) 100%);
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+        .dark .parallax-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(30, 64, 175, 0.9) 50%, rgba(37, 99, 235, 0.85) 100%);
+        }
+
+        /* Button hover effect */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Enquire button pulse */
+        .enquire-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Feature icon float */
+        .feature-icon {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<%- include('../header.ejs') %> 
+<br>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen font-sans antialiased">
+    <!-- Hero Section with Unsplash Image - Comfortable home setting -->
+    <section class="relative w-full h-96 lg:h-[550px] overflow-hidden">
+        <!-- Unsplash/Pexels Image: Warm, comfortable home environment with caregiver -->
+        <img src="https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+             alt="Comfortable home care setting with caregiver" 
+             class="absolute inset-0 w-full h-full object-cover object-center"
+             loading="lazy">
+        <!-- Blue Gradient Overlay - matches header theme -->
+        <div class="hero-overlay absolute inset-0"></div>
+        
+        <!-- Hero Content -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 animate-fade-in-up">
+            <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                <i class="ri-home-heart-fill text-white text-3xl"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+                Home Care
+            </h1>
+            <div class="w-24 h-1 bg-white rounded-full mb-6"></div>
+            <p class="text-white text-xl md:text-2xl max-w-3xl drop-shadow-md font-medium">
+                Where Comfort Meets Care, and Independence is Yours to Keep
+            </p>
+        </div>
+    </section>
+
+    <!-- Homecare Support Introduction -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center justify-center p-2 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-6">
+                    <i class="ri-home-heart-line text-blue-600 dark:text-blue-400 text-2xl mx-2"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-white mb-6">
+                    Homecare <span class="text-blue-600 dark:text-blue-400">Support</span>
+                </h2>
+                <p class="text-gray-600 dark:text-gray-300 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
+                    At Eternity Care Services, we believe home is more than just a place—it's where you feel safe and free. Our Home Care Support services offer personalized assistance, so you can continue living life on your terms, surrounded by the things you love, with the support you need to thrive.
+                </p>
+                <div class="mt-8">
+                    <a href="#services" class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:underline">
+                        <span>See more</span>
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                    <span class="mx-3 text-gray-300 dark:text-gray-600">|</span>
+                    <a href="#disability" class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:underline">
+                        <span>Disability Care</span>
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Approach Section with Image -->
+    <section class="bg-white dark:bg-gray-800 py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <!-- Image Side (Different Image) -->
+                <div class="lg:w-1/2 animate-fade-in-right">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="https://images.pexels.com/photos/6647026/pexels-photo-6647026.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+                             alt="Caregiver providing compassionate support" 
+                             class="w-full h-auto object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg">
+                            <p class="text-blue-600 dark:text-blue-400 font-semibold flex items-center">
+                                <i class="ri-heart-pulse-fill mr-2"></i> Personalised Care
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Side -->
+                <div class="lg:w-1/2 space-y-6 animate-fade-in-up">
+                    <div class="inline-flex items-center p-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                        <i class="ri-user-heart-line text-blue-600 dark:text-blue-400 mr-2"></i>
+                        <span class="text-blue-600 dark:text-blue-400 font-medium">Our Approach</span>
+                    </div>
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                        Independence is <span class="text-blue-600 dark:text-blue-400">Personal</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                        At Eternity Care Services, we understand that independence is personal. Whether you need a gentle helping hand, companionship, or full-time support, we tailor our services to fit seamlessly into your life.
+                    </p>
+                    
+                    <!-- Feature points -->
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 bg-blue-100 dark:bg-blue-900/40 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                <i class="ri-home-4-line text-xs text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300"><span class="font-semibold">Stay Independent at Home</span> – Your home is your sanctuary. We help you maintain it with dignity and ease, ensuring you have everything you need to live comfortably.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 bg-blue-100 dark:bg-blue-900/40 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                <i class="ri-compass-line text-xs text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300"><span class="font-semibold">A Life Without Limits</span> – Need help getting ready for the day? Assistance with meals? Support to step outside and embrace the world? We make it happen.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 bg-blue-100 dark:bg-blue-900/40 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                <i class="ri-heart-3-line text-xs text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300"><span class="font-semibold">Care with Compassion</span> – Our dedicated team doesn't just assist; we listen, understand, and support—because care is about more than just tasks; it's about people.</p>
+                        </div>
+                    </div>
+
+                    <!-- Enquire Now Button -->
+                    <div class="pt-6">
+                        <a href="#enquire" class="btn-hover enquire-pulse inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-full shadow-lg transition-all duration-300">
+                            <i class="ri-chat-1-line mr-2 text-xl"></i>
+                            Enquire Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Home Care Services Section -->
+    <section id="services" class="container mx-auto px-4 py-16 md:py-20">
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center justify-center p-2 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-6">
+                <i class="ri-service-line text-blue-600 dark:text-blue-400 text-2xl mx-2"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                Home Care <span class="text-blue-600 dark:text-blue-400">Our Services</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+                Comprehensive support tailored to your unique needs and lifestyle
+            </p>
+        </div>
+
+        <!-- Services Grid - 6 Cards (Different Images for Each) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Service 1: Personalised Daily Assistance -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/6647030/pexels-photo-6647030.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                         alt="Personal care assistance" 
+                         class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mb-4">
+                        <i class="ri-user-heart-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Personalised Daily Assistance</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                        Every day is different, and so are your needs. From morning routines to evening relaxation, we provide gentle and respectful personal care—including bathing, dressing, grooming, and mobility assistance—so you can feel confident in every moment.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Service 2: A Helping Hand Around the Home -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                         alt="Housekeeping and home help" 
+                         class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mb-4">
+                        <i class="ri-home-4-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">A Helping Hand Around the Home</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                        A clean, organised home fosters peace of mind. We take care of the small things—housekeeping, laundry, meal preparation, and grocery shopping—so you can focus on what truly matters.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Service 3: Go Wherever Life Takes You -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/6647026/pexels-photo-6647026.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                         alt="Transport and mobility support" 
+                         class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mb-4">
+                        <i class="ri-car-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Go Wherever Life Takes You</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                        Appointments, social outings, or simply a scenic drive—your mobility should never be a limitation. With our safe and reliable transport services, the world is always within reach.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Service 4: Medication & Wellbeing Support -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/7653567/pexels-photo-7653567.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                         alt="Medication and wellness support" 
+                         class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mb-4">
+                        <i class="ri-medicine-bottle-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Medication & Wellbeing Support</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                        Your health is a priority. Whether it's medication reminders, meal planning, or light exercise assistance, we're here to help you stay on track with your wellbeing.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Service 5: 24/7 Care & Support -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/7551610/pexels-photo-7551610.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                         alt="24/7 care and support" 
+                         class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mb-4">
+                        <i class="ri-time-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">24/7 Care & Support</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                        Care doesn't follow a schedule, and neither do we. Whether you need ongoing daily assistance or support during unexpected situations, our dedicated team is always here to ensure you live safely and comfortably in your own home.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Service 6: Community & Social Connection -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/6647017/pexels-photo-6647017.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                         alt="Community and social connection" 
+                         class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mb-4">
+                        <i class="ri-group-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Community & Social Connection</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                        Life is meant to be shared. Whether it's a walk in the park, a visit with friends, or joining a community event, we help you stay socially engaged and connected.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Centered Enquire Button -->
+        <div class="text-center mt-12">
+            <a href="#enquire" class="btn-hover inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-bold px-10 py-4 rounded-full shadow-lg transition-all duration-300">
+                <i class="ri-chat-1-line mr-2 text-xl"></i>
+                Enquire Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Parallax Background Section: WHY CHOOSE US -->
+    <section class="parallax-section relative py-24 md:py-32" style="background-image: url('https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+        <div class="parallax-overlay"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-8">
+                    <i class="ri-star-smile-line text-3xl"></i>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">WHY CHOOSE US</h2>
+                <div class="w-24 h-1 bg-white/50 rounded-full mx-auto mb-8"></div>
+                
+                <div class="space-y-8 text-lg md:text-xl leading-relaxed">
+                    <p class="text-white/95">
+                        At Eternity Care Services, we understand that no two lives are the same, and neither should be the care provided. Our approach is deeply personal, ensuring that every individual receives a customised care plan tailored to their unique needs and lifestyle. Whether you require occasional support or ongoing assistance, our team takes the time to understand your preferences, routines, and goals, creating a plan that enhances your independence while providing the right level of care. We believe in fostering a sense of belonging and security, allowing you to continue living life on your terms with dignity and confidence.
+                    </p>
+                    
+                    <p class="text-white/95">
+                        Our team is more than just a group of caregivers—they are companions, listeners, and trusted friends who genuinely care about your well-being. With extensive experience and a deep commitment to compassion, our support workers ensure that every interaction is meaningful and uplifting. At Eternity Care Services, we also believe that care should be accessible to all, which is why we offer services under NDIS, Home Care Packages, and private funding arrangements. Above all, we prioritise your independence, empowering you to make your own choices, maintain your freedom, and live the life you choose, with the reassurance that the right support is always within reach.
+                    </p>
+                </div>
+
+                <!-- Funding Options Badges -->
+                <div class="flex flex-wrap justify-center gap-4 mt-12">
+                    <span class="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full text-white font-medium">NDIS</span>
+                    <span class="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full text-white font-medium">Home Care Packages</span>
+                    <span class="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full text-white font-medium">Private Funding</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Your Journey Starts Here Section -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 rounded-3xl p-10 md:p-16 shadow-2xl">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+                <!-- Left Content -->
+                <div class="lg:w-2/3 text-white">
+                    <div class="inline-flex items-center p-2 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                        <i class="ri-road-map-line mr-2"></i>
+                        <span class="text-sm font-medium">Ready to Begin?</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Your Journey Starts Here</h2>
+                    <p class="text-white/90 text-lg md:text-xl mb-6">
+                        Looking for reliable and personalised home care support? Our team is here to help you every step of the way.
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                            <i class="ri-phone-line text-2xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-white/80 text-sm">Call us today</p>
+                            <a href="tel:1300513309" class="text-3xl md:text-4xl font-bold text-white hover:underline">1300 513 309</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right CTA Buttons -->
+                <div class="lg:w-1/3 flex flex-col gap-4">
+                    <a href="#" class="btn-hover bg-white text-blue-700 font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-lg">
+                        <i class="ri-chat-1-line mr-2"></i>
+                        Enquire Now
+                    </a>
+                    <a href="#" class="btn-hover bg-transparent border-2 border-white text-white font-bold px-8 py-4 rounded-full hover:bg-white/10 transition-all duration-300 flex items-center justify-center text-lg">
+                        <i class="ri-calendar-line mr-2"></i>
+                        Book a Consultation
+                    </a>
+                </div>
+            </div>
+
+            <!-- Decorative Elements -->
+            <div class="flex justify-center mt-8 pt-6 border-t border-white/20">
+                <div class="flex space-x-4 text-white/80">
+                    <span class="flex items-center"><i class="ri-checkbox-circle-fill mr-1 text-white/60"></i> NDIS Approved</span>
+                    <span class="flex items-center"><i class="ri-checkbox-circle-fill mr-1 text-white/60"></i> Home Care Packages</span>
+                    <span class="flex items-center"><i class="ri-checkbox-circle-fill mr-1 text-white/60"></i> Private Funding</span>
+                </div>
+            </div>
+        </div>
+    </section>
+<%- include('../footer.ejs') %> 
+    <!-- Theme Toggle JavaScript (matches header system) -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Theme initialization
+            function initTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+                
+                if (currentTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    updateThemeUI('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    updateThemeUI('light');
+                }
+            }
+            
+            // Update UI elements
+            function updateThemeUI(theme) {
+                const themeIcon = document.getElementById('themeIcon');
+                const themeText = document.getElementById('themeText');
+                
+                if (themeIcon) {
+                    themeIcon.className = theme === 'dark' ? 'ri-sun-line mr-2 text-lg' : 'ri-moon-line mr-2 text-lg';
+                }
+                if (themeText) {
+                    themeText.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+                }
+            }
+            
+            // Toggle theme
+            window.toggleTheme = function() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    updateThemeUI('light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    updateThemeUI('dark');
+                }
+            };
+
+            // Event listeners
+            function initThemeToggle() {
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.toggleTheme();
+                    });
+                }
+            }
+
+            // Initialize on load
+            document.addEventListener('DOMContentLoaded', function() {
+                initTheme();
+                initThemeToggle();
+            });
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark');
+                        updateThemeUI('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        updateThemeUI('light');
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
